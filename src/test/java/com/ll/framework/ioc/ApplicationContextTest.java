@@ -27,9 +27,9 @@ public class ApplicationContextTest {
     @DisplayName("testPostService 빈 얻기")
     public void t2() {
         TestPostService testPostService = applicationContext
-                .genBean("testPostService");
+                .genBean("testPostService"); // "testPostService"라는 이름으로 요청
 
-        assertThat(testPostService).isNotNull();
+        assertThat(testPostService).isNotNull(); // 실제값이 null이 아니어야 통과!
     }
 
     @Test
