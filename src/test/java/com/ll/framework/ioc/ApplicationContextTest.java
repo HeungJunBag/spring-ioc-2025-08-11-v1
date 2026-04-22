@@ -59,6 +59,11 @@ public class ApplicationContextTest {
 
         assertThat(testPostRepository).isNotNull();
     }
+    /*
+    * t4: "testPostRepository"라는 이름으로 빈을 요청했는데, 실제로는 ApplicationContext에서 "testPostRepository"라는 이름으로 빈이 등록되어 있지 않음
+    *   - "testPostRepository" 이름으로 빈을 요청하는데, 아직 이 이름으로 등록하지 않음
+    *   - testPostRepository 객체는 만들었지만, beans에 넣지 않아서 genBean("testPostRepository")가 null을 반환함
+    * */
 
     @Test
     @DisplayName("testPostService has testPostRepository")
