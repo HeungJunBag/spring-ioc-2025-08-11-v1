@@ -45,6 +45,11 @@ public class ApplicationContextTest {
         assertThat(testPostService2).isNotNull();
         assertThat(testPostService1).isSameAs(testPostService2);
     }
+    /*
+    * isSamsAs
+    *   - 같은 인스턴스 인지 확인, 단순히 값이 같은게 아니라,
+    *   - 메모리 주소가 완전히 동일한 객체이어야함
+    * */
 
     @Test
     @DisplayName("testPostRepository")
