@@ -24,7 +24,18 @@ public class ApplicationContext {
         beans.put("testPostService", testPostService);
     }
 
+    @SuppressWarnings("unchecked")
     public <T> T genBean(String beanName) {
-        return (T) beans.get(beanName); // 일단 null 반환 (컴파일 에러 방지용)
+        // Map에서 이름으로 객체를 찾아서 반환
+        // 한 번 저장된 객체는 계속 재사용되므로, t3의 isSameAd(주소값 비교)를 통과!
+        return (T) beans.get(beanName);
     }
 }
+
+/*
+* @SuppressWarnings("unchecked")
+*   - 경고를 억제
+*   - "unchecked"
+*       - 억제할 경고의 종류를 지정
+*       - 여기서는, 타입 체크를 하지 않은 형변환에 대한 경고
+* */
