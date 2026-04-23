@@ -49,3 +49,14 @@ public class ApplicationContext {
  * testPostRepository 객체를 만들고,
  * beans에 넣지 않으면 genBean("testPostRepository")가 null을 반환함
  * */
+
+/* t5: testPostService 안에 testPostRepository가 있어야함
+         - 이미 t5가 통과되게 구현되어이 있음
+
+        // ApplicationContext 생성자에서
+        TestPostRepository testPostRepository = new TestPostRepository();  // 객체 A
+        TestPostService testPostService = new TestPostService(testPostRepository);  // A를 주입!
+
+        beans.put("testPostRepository", testPostRepository);  // A를 Map에 저장
+        beans.put("testPostService", testPostService);         // A를 품고 있는 testPostService 저장
+* */
