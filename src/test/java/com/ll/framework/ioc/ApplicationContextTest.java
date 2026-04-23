@@ -76,6 +76,17 @@ public class ApplicationContextTest {
                 applicationContext.genBean("testPostRepository")
         );
     }
+    /*
+    * t5: testPostService 안에 testPostRepository가 있어야 함
+    * 이 테스트는 두 가지를 동시에 확인함
+    *   - 1. testPostService 객체 내부의 testPostRepostiory 필드가 존재하는가
+    *   - 2. 그 필드의 값이 컨테이너에 등록된 testPostRepository 빈과 같은 인스턴스인가
+    * 개념: hasFieldOrPropertyWithValue
+    *   - AssertJ의 이 메서드는 리플렉션을 사용함
+    *       - 리플렉션이란? Java의 기능으로, 컴파일 시점에 알 수 없는 클래스의 구조(필드, 메서드 등)를 런타임에 동적으로 탐색하고 접근할 수 있게 해줌
+    *         private 접근 제어자도 우회 가능
+    *   - private으로 선언된 필드도 접근해서 값을 비교할 수 있음
+    * */
 
     @Test
     @DisplayName("testFacadePostService has testPostService, testPostRepository")
