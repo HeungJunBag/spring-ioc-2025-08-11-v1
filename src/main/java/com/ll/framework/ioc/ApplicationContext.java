@@ -2,6 +2,7 @@
 package com.ll.framework.ioc;
 
 import com.ll.domain.testPost.testPost.repository.TestPostRepository;
+import com.ll.domain.testPost.testPost.service.TestFacadePostService;
 import com.ll.domain.testPost.testPost.service.TestPostService;
 
 import java.util.HashMap;
@@ -21,9 +22,16 @@ public class ApplicationContext {
         // 단, testPostRepository를 주입해서 testPostService를 만든다  
         TestPostService testPostService = new TestPostService(testPostRepository);
 
-        // Map에 저장  
+        // 파사드는 서비스와 저장소 모두를 제어하거나 조합할 수 있어야 한다
+        // 여기서 중요한 점은 '동일한' Repository 인스턴스를 전달하여 데이터 일관성을 유지
+        TestFacadePostService testFacadePostService =
+                new TestFacadePostService(testPostService, testPostRepository);
+
+        // Map에 저장
+        // 외부에서 이름만으로 꺼내 쓸 수 있도록 저장소(Map 등)에 담아둔다
         beans.put("testPostRepository", testPostRepository);
         beans.put("testPostService", testPostService);
+        beans.put("testFacadePostService", testFacadePostService);
     }
 
     @SuppressWarnings("unchecked")
