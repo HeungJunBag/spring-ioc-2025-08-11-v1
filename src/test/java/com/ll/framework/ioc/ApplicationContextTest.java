@@ -94,14 +94,20 @@ public class ApplicationContextTest {
         TestFacadePostService testFacadePostService = applicationContext
                 .genBean("testFacadePostService");
 
+        // testPostService 필드가 컨테이너의 testPostService 빈과 같아야함
         assertThat(testFacadePostService).hasFieldOrPropertyWithValue(
                 "testPostService",
                 applicationContext.genBean("testPostService")
         );
 
+        // testPostRepository 필드가 컨테이너의 testPostRepository 빈과 같아야 함
         assertThat(testFacadePostService).hasFieldOrPropertyWithValue(
                 "testPostRepository",
                 applicationContext.genBean("testPostRepository")
         );
     }
+    /*
+    * t6: testFacadePostService 안에 두 의존성이 있어야 함
+    * TestFacadePostService가 갖는 두 의존성이 모두 컨테이너에 등록된 같은 싱글톤 빈이어야 한다.
+    * */
 }
